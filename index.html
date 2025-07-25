@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Learning Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.22.10/babel.min.js"></script>
+  <style>
+    /* Embedded Tailwind CSS classes with light pink color scheme */
+    body { font-family: 'Inter', sans-serif; margin: 0; }
+    .bg-pink-50 { background-color: #fce7f3; }
+    .bg-pink-400 { background-color: #f9a8d4; }
+    .bg-gray-200 { background-color: #e5e7eb; }
+    .bg-gray-600 { background-color: #4b5563; }
+    .bg-white { background-color: #ffffff; }
+    .bg-green-500 { background-color: #22c55e; }
+    .text-white { color: #ffffff; }
+    .text-gray-200 { color: #e5e7eb; }
+    .text-gray-500 { color: #6b7280; }
+    .text-gray-600 { color: #4b5563; }
+    .text-gray-800 { color: #1f2937; }
+    .text-pink-600 { color: #db2777; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .p-4 { padding: 1rem; }
+    .p-8 { padding: 2rem; }
+    .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .m-4 { margin: 1rem; }
+    .mt-1 { margin-top: 0.25rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mx-2 { margin-left: 0.5rem; margin-right: 0.5rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .max-w-md { max-width: 28rem; }
+    .max-w-lg { max-width: 32rem; }
+    .max-w-7xl { max-width: 80rem; }
+    .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    .hover\:shadow-xl:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+    .rounded { border-radius: 0.25rem; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .rounded-full { border-radius: 9999px; }
+    .h-2\.5 { height: 0.625rem; }
+    .w-full { width: 100%; }
+    .grid { display: grid; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .gap-4 { gap: 1rem; }
+    .gap-2 { gap: 0.5rem; }
+    .container { width: 100%; max-width: 80rem; margin-left: auto; margin-right: auto; }
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .justify-between { justify-content: space-between; }
+    .justify-center { justify-content: center; }
+    .items-center { align-items: center; }
+    .text-center { text-align: center; }
+    .transition { transition-property: all; transition-duration: 150ms; }
+    .duration-300 { transition-duration: 300ms; }
+    .hover\:bg-pink-500:hover { background-color: #ec4899; }
+    .hover\:text-gray-200:hover { color: #e5e7eb; }
+    .hover\:scale-110:hover { transform: scale(1.1); }
+    .opacity-0 { opacity: 0; }
+    .opacity-100 { opacity: 1; }
+    .fixed { position: fixed; }
+    .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+    .bg-opacity-50 { background-color: rgba(0, 0, 0, 0.5); }
+    .z-50 { z-index: 50; }
+    @media (min-width: 640px) {
+      .sm\:flex-row { flex-direction: row; }
+      .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 768px) {
+      .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    // Sample data for courses (added two more courses)
+    const courses = [
+      { id: 1, title: "Python Programming Essentials", description: "Master Python fundamentals for coding beginners.", progress: 50, videoUrl: "https://www.youtube.com/embed/YYXdXT2l-GI", enrolled: false, type: "Free" },
+      { id: 2, title: "React for Web Development", description: "Build dynamic web apps with React and JSX.", progress: 25, videoUrl: "https://www.youtube.com/embed/SqcY0GlETPk", enrolled: false, type: "Free" },
+      { id: 3, title: "Data Science with Python", description: "Analyze and visualize data using Python libraries.", progress: 75, videoUrl: "https://www.youtube.com/embed/N6BghzuFLIg", enrolled: false, type: "Free" },
+      { id: 4, title: "Machine Learning Basics", description: "Introduction to machine learning algorithms and techniques.", progress: 10, videoUrl: "https://www.youtube.com/embed/ukzFI9rgwfU", enrolled: false, type: "Paid" },
+      { id: 5, title: "JavaScript for Beginners", description: "Learn JavaScript to create interactive websites.", progress: 40, videoUrl: "https://www.youtube.com/embed/PkZNo7MFNFg", enrolled: false, type: "Paid" },
+      { id: 6, title: "SQL and Database Design", description: "Master SQL for managing and querying databases.", progress: 20, videoUrl: "https://www.youtube.com/embed/xz25P7l8V3U", enrolled: false, type: "Paid" },
+    ];
+
+    // Navigation Component
+    function Navbar({ isLoggedIn, toggleLogin }) {
+      return (
+        <nav className="bg-pink-50 text-gray-800 p-4 shadow-md">
+          <div className="container mx-auto flex justify-between items-center">
+            <h1 className="text-2xl font-bold text-pink-600">Codtech Solutions</h1>
+            <div className="flex items-center">
+              <a href="#home" className="mx-2 text-gray-600 hover:text-pink-600 transition hover:scale-110">Home</a>
+              <a href="#courses" className="mx-2 text-gray-600 hover:text-pink-600 transition hover:scale-110">Courses</a>
+              <a href="#dashboard" className="mx-2 text-gray-600 hover:text-pink-600 transition hover:scale-110">Dashboard</a>
+              <button
+                onClick={toggleLogin}
+                className="ml-4 bg-pink-400 text-white px-4 py-2 rounded hover:bg-pink-500"
+              >
+                {isLoggedIn ? "Logout" : "Login"}
+              </button>
+            </div>
+          </div>
+        </nav>
+      );
+    }
+
+    // Course Card Component
+    function CourseCard({ course, onSelect, onEnroll }) {
+      return (
+        <div className="bg-white rounded-lg shadow-lg p-8 m-4 max-w-lg hover:shadow-xl transition duration-300">
+          <h2 className="text-xl font-semibold text-gray-800">{course.title}</h2>
+          <p className="text-gray-600 mt-2">{course.description}</p>
+          <p className="text-sm text-gray-500 mt-2">{course.type}</p>
+          <div className="mt-4">
+            <div className="w-full bg-gray-200 rounded-full h-2.5">
+              <div
+                className="bg-pink-400 h-2.5 rounded-full"
+                style={{ width: `${course.progress}%` }}
+              ></div>
+            </div>
+            <p className="text-sm text-gray-500 mt-1">{course.progress}% Complete</p>
+          </div>
+          <div className="mt-4 flex sm:flex-row flex-col gap-2">
+            <button
+              onClick={() => onSelect(course)}
+              className="bg-pink-400 text-white px-4 py-2 rounded hover:bg-pink-500"
+            >
+              View Course
+            </button>
+            <button
+              onClick={() => onEnroll(course.id)}
+              className={`px-4 py-2 rounded ${course.enrolled ? 'bg-green-500' : 'bg-gray-600'} text-white hover:bg-pink-500`}
+            >
+              {course.enrolled ? "Enrolled" : "Enroll"}
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    // Course Detail Component
+    function CourseDetail({ course, onBack, onMarkComplete }) {
+      return (
+        <div className="container mx-auto p-4">
+          <button
+            onClick={onBack}
+            className="mb-4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-pink-500"
+          >
+            Back to Courses
+          </button>
+          <h1 className="text-3xl font-bold text-gray-800">{course.title}</h1>
+          <p className="text-gray-600 mt-2">{course.description}</p>
+          <p className="text-sm text-gray-500 mt-2">{course.type}</p>
+          <div className="mt-4">
+            <iframe
+              width="100%"
+              height="400"
+              src={course.videoUrl}
+              title={course.title}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-lg font-semibold">Progress</h3>
+            <div className="w-full bg-gray-200 rounded-full h-2.5">
+              <div
+                className="bg-pink-400 h-2.5 rounded-full"
+                style={{ width: `${course.progress}%` }}
+              ></div>
+            </div>
+            <p className="text-sm text-gray-500 mt-1">{course.progress}% Complete</p>
+          </div>
+          <button
+            onClick={() => onMarkComplete(course.id)}
+            className="mt-4 bg-pink-400 text-white px-4 py-2 rounded hover:bg-pink-500"
+            disabled={course.progress === 100}
+          >
+            {course.progress === 100 ? "Completed" : "Mark Complete"}
+          </button>
+        </div>
+      );
+    }
+
+    // Enrollment Modal Component
+    function EnrollmentModal({ courseTitle, onClose }) {
+      return (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-300">
+          <div className="bg-white rounded-lg p-6 max-w-md w-full text-center animate-fade-in">
+            <h2 className="text-xl font-semibold text-gray-800">Enrollment Confirmed</h2>
+            <p className="text-gray-600 mt-2">You have successfully enrolled in {courseTitle}!</p>
+            <button
+              onClick={onClose}
+              className="mt-4 bg-pink-400 text-white px-4 py-2 rounded hover:bg-pink-500"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    // Animation for modal and navbar
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = `
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.3s ease-in;
+      }
+    `;
+    document.head.appendChild(styleSheet);
+
+    // Dashboard Component
+    function Dashboard({ courses, onSelect }) {
+      return (
+        <div className="container mx-auto p-4">
+          <h1 className="text-3xl font-bold text-gray-800">Your Progress Dashboard</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+            {courses.map((course) => (
+              <div key={course.id} className="bg-white rounded-lg shadow-lg p-8 max-w-lg">
+                <h2 className="text-xl font-semibold text-gray-800">{course.title}</h2>
+                <p className="text-gray-600 mt-2">{course.description}</p>
+                <p className="text-sm text-gray-500 mt-2">{course.type}</p>
+                <div className="mt-4">
+                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                    <div
+                      className="bg-pink-400 h-2.5 rounded-full"
+                      style={{ width: `${course.progress}%` }}
+                    ></div>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1">{course.progress}% Complete</p>
+                </div>
+                <button
+                  onClick={() => onSelect(course)}
+                  className="mt-4 bg-pink-400 text-white px-4 py-2 rounded hover:bg-pink-500"
+                >
+                  Continue
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    // Main App Component
+    function App() {
+      const [selectedCourse, setSelectedCourse] = useState(null);
+      const [courseData, setCourseData] = useState(courses);
+      const [searchTerm, setSearchTerm] = useState("");
+      const [isLoggedIn, setIsLoggedIn] = useState(false);
+      const [showModal, setShowModal] = useState(false);
+      const [enrolledCourseTitle, setEnrolledCourseTitle] = useState("");
+
+      const handleEnroll = (courseId) => {
+        setCourseData((prev) =>
+          prev.map((course) =>
+            course.id === courseId ? { ...course, enrolled: true } : course
+          )
+        );
+        const enrolledCourse = courseData.find((course) => course.id === courseId);
+        setEnrolledCourseTitle(enrolledCourse.title);
+        setShowModal(true);
+      };
+
+      const handleMarkComplete = (courseId) => {
+        setCourseData((prev) =>
+          prev.map((course) =>
+            course.id === courseId ? { ...course, progress: 100 } : course
+          )
+        );
+        setSelectedCourse(null); // Return to main page
+      };
+
+      const filteredCourses = courseData.filter((course) =>
+        course.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+
+      return (
+        <div>
+          {showModal && (
+            <EnrollmentModal
+              courseTitle={enrolledCourseTitle}
+              onClose={() => setShowModal(false)}
+            />
+          )}
+          <Navbar isLoggedIn={isLoggedIn} toggleLogin={() => setIsLoggedIn(!isLoggedIn)} />
+          {isLoggedIn && (
+            <div className="container mx-auto p-4">
+              <p className="text-lg text-gray-600">Welcome, Student! Explore your courses below.</p>
+            </div>
+          )}
+          {selectedCourse ? (
+            <CourseDetail
+              course={selectedCourse}
+              onBack={() => setSelectedCourse(null)}
+              onMarkComplete={handleMarkComplete}
+            />
+          ) : (
+            <div>
+              <div id="home" className="bg-pink-50 py-12 text-center">
+                <h1 className="text-4xl font-bold text-pink-600">Welcome to Codtech Solutions</h1>
+                <p className="text-lg text-gray-600 mt-4">
+                  Your journey to knowledge starts here! Explore our courses below.
+                </p>
+              </div>
+              <div id="courses" className="container mx-auto p-4">
+                <h2 className="text-2xl font-bold text-gray-800">Available Courses</h2>
+                <div className="mt-4">
+                  <input
+                    type="text"
+                    placeholder="Search courses..."
+                    className="w-full max-w-md p-2 border border-gray-300 rounded"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+                  {filteredCourses.map((course) => (
+                    <CourseCard
+                      key={course.id}
+                      course={course}
+                      onSelect={setSelectedCourse}
+                      onEnroll={handleEnroll}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div id="dashboard">
+                <Dashboard courses={courseData} onSelect={setSelectedCourse} />
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Render the app
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
