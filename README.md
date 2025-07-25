@@ -1,7 +1,3 @@
-Below is a concise and professional `README.md` file description for your e-learning platform project, designed for uploading to GitHub. This version focuses solely on the project itself, omitting references to CODTECH IT Solutions or the internship context, as per your request. It describes the project’s purpose, features, and setup instructions based on the React-based `index.html` code with your specified modifications (light pink color scheme, "Codtech Solutions" name, six courses with Free/Paid labels, larger course cards, navbar animations, "Mark Complete" navigation, and "Continue" buttons in the dashboard).
-
----
-
 # E-Learning Platform
 
 This is a responsive e-learning platform named **Codtech Solutions**, built to provide an interactive and elegant interface for users to explore, enroll in, and track progress for online courses. The platform features a light pink color scheme, a modern design with hover animations, and a user-friendly experience, developed using React and embedded Tailwind CSS.
@@ -67,7 +63,12 @@ elearning-platform/
 - **Enrollment**: Enroll in courses with a confirmation modal.
 
 ## Screenshots
-*(Add screenshots here for the home page, courses section, dashboard, course detail, and modal. Use tools like Snipping Tool or browser extensions to capture images.)*
+<img width="1919" height="870" alt="Image" src="https://github.com/user-attachments/assets/e028d621-d6e2-4923-b709-45bb1853ced5" />
+<img width="1919" height="866" alt="Image" src="https://github.com/user-attachments/assets/64569ac6-27d2-4f37-994c-7d288b7b91a8" />
+<img width="1897" height="859" alt="Image" src="https://github.com/user-attachments/assets/1ba72b9b-1fcd-4e06-b824-005f9dd0a90e" />
+<img width="1911" height="869" alt="Image" src="https://github.com/user-attachments/assets/6977fb28-009c-4a68-87b9-dc7cc88273e6" />
+<img width="1918" height="874" alt="Image" src="https://github.com/user-attachments/assets/b0968366-79a7-423c-9c71-b3a51bc07473" />
+<img width="1917" height="877" alt="Image" src="https://github.com/user-attachments/assets/e0e299c3-15ae-4227-aa8b-40b0ea31026b" />
 
 ## Troubleshooting
 - **Blank Page**:
