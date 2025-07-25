@@ -63,12 +63,13 @@ elearning-platform/
 - **Enrollment**: Enroll in courses with a confirmation modal.
 
 ## Screenshots
-<img width="1919" height="870" alt="Image" src="https://github.com/user-attachments/assets/e028d621-d6e2-4923-b709-45bb1853ced5" />
-<img width="1919" height="866" alt="Image" src="https://github.com/user-attachments/assets/64569ac6-27d2-4f37-994c-7d288b7b91a8" />
-<img width="1897" height="859" alt="Image" src="https://github.com/user-attachments/assets/1ba72b9b-1fcd-4e06-b824-005f9dd0a90e" />
-<img width="1911" height="869" alt="Image" src="https://github.com/user-attachments/assets/6977fb28-009c-4a68-87b9-dc7cc88273e6" />
-<img width="1918" height="874" alt="Image" src="https://github.com/user-attachments/assets/b0968366-79a7-423c-9c71-b3a51bc07473" />
+
 <img width="1917" height="877" alt="Image" src="https://github.com/user-attachments/assets/e0e299c3-15ae-4227-aa8b-40b0ea31026b" />
+<img width="1918" height="874" alt="Image" src="https://github.com/user-attachments/assets/b0968366-79a7-423c-9c71-b3a51bc07473" />
+<img width="1911" height="869" alt="Image" src="https://github.com/user-attachments/assets/6977fb28-009c-4a68-87b9-dc7cc88273e6" />
+<img width="1897" height="859" alt="Image" src="https://github.com/user-attachments/assets/1ba72b9b-1fcd-4e06-b824-005f9dd0a90e" />
+<img width="1919" height="866" alt="Image" src="https://github.com/user-attachments/assets/64569ac6-27d2-4f37-994c-7d288b7b91a8" />
+<img width="1919" height="870" alt="Image" src="https://github.com/user-attachments/assets/e028d621-d6e2-4923-b709-45bb1853ced5" />
 
 ## Troubleshooting
 - **Blank Page**:
